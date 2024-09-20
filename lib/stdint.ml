@@ -124,7 +124,8 @@ module Int8 = struct
 (*   val of_string : string -> int8 *)
   let of_string s: string = 
               let i: int8 = String.get_int8(s) |>
-              Int.to_int8()
+              Nativeint.of_int()
+              Int8.of_nativeint()
               in
               i
                 
@@ -194,7 +195,8 @@ module Int16 = struct
 (*   val of_string : string -> int16 *)
   let of_string s: string = 
                let i: int16 = String.get_int16_ne(s) |>
-               Int.to_int16()
+               Nativeint.of_int()
+               Int16.of_nativeint()
                in
                i
                 
