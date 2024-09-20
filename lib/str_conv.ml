@@ -110,11 +110,11 @@ module Make (I : IntSig) : S with type t = I.t = struct
     with
       | EndOfNumber (n, off) -> n, off
 
-(*   let of_string s =
+  let of_string s =
     try
       let n, _ = _of_substring 0 s ".of_string" in n
     with
-      | EndOfNumber _ -> invalid_arg (I.name ^ ".of_string") *)
+      | EndOfNumber _ -> invalid_arg (I.name ^ ".of_string")
 
   let to_string_base base prefix x =
     let prefixlen = String.length prefix in
