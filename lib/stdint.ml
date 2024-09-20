@@ -121,7 +121,10 @@ module Int8 = struct
     let name = "Int8"
   end
   include Base
-
+  val of_string : string -> int8
+  let of_string s: string = 
+                String.get_int8(s)
+                
   external of_nativeint : nativeint ->      int8 = "int8_of_nativeint" [@@noalloc]
   external of_float     :     float ->      int8 = "int8_of_float" [@@noalloc]
   external of_int8      :      int8 ->      int8 = "%identity"
@@ -185,7 +188,11 @@ module Int16 = struct
     let name = "int16"
   end
   include Base
-
+  val of_string : string -> int16
+  let of_string s: string = 
+                String.get_int16_ne(s)
+                
+  
   external of_nativeint : nativeint ->     int16 = "int16_of_nativeint" [@@noalloc]
   external of_float     :     float ->     int16 = "int16_of_float" [@@noalloc]
   external of_int8      :      int8 ->     int16 = "int16_of_int8" [@@noalloc]
@@ -898,7 +905,7 @@ module Uint24 = struct
     let name    = "Uint24"
   end
   include Base
-
+  
   external of_nativeint : nativeint ->    uint24 = "uint24_of_nativeint" [@@noalloc]
   external of_float     :     float ->    uint24 = "uint24_of_float" [@@noalloc]
   external of_int8      :      int8 ->    uint24 = "uint24_of_int8" [@@noalloc]
