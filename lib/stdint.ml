@@ -122,12 +122,12 @@ module Int8 = struct
   end
   include Base
 (*   val of_string : string -> int8 *)
-  let of_string s: string = 
+(*   let of_string s: string = 
               let i: int8 = String.get_int8(s) |>
               Nativeint.of_int
               of_nativeint
               in
-              i
+              i *)
                 
   external of_nativeint : nativeint ->      int8 = "int8_of_nativeint" [@@noalloc]
   external of_float     :     float ->      int8 = "int8_of_float" [@@noalloc]
@@ -193,12 +193,12 @@ module Int16 = struct
   end
   include Base
 (*   val of_string : string -> int16 *)
-  let of_string s: string = 
+(*   let of_string s: string = 
                let i: int16 = String.get_int16_ne(s) |>
                Nativeint.of_int
                of_nativeint
                in
-               i
+               i *)
                 
   
   external of_nativeint : nativeint ->     int16 = "int16_of_nativeint" [@@noalloc]
