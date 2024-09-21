@@ -95,7 +95,7 @@ module Make (I : IntSig) : S with type t = I.t = struct
           (* do not accept digit larger than the base *)
           
           print_endline "max2";
-          if d >= base then raise (EndOfNumber (n, off));
+          (* if d >= base then raise (EndOfNumber (n, off));*)
           (* will we overflow? *)
           (match compare n thresh with
           | 0 ->
