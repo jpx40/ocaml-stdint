@@ -36,6 +36,7 @@ module Make (I : IntSig) : S with type t = I.t = struct
   (** Base function for *of_string* and *of_substring*
     * functions *)
   let _of_substring start_off s func_name =
+    print_endline "arg";
     let fail () = invalid_arg (I.name ^ func_name) in
     if start_off >= String.length s then fail ();
     (* is this supposed to be a negative number? *)
@@ -83,15 +84,23 @@ module Make (I : IntSig) : S with type t = I.t = struct
             if c >= '0' && c <= '9' then 48
             else if c >= 'A' && c <= 'F' then 55
             else if c >= 'a' && c <= 'f' then 87
-            else raise (EndOfNumber (n, off)) in
+            
+            else  begin
+              print_endline "max1"; 
+              raise (EndOfNumber (n, off));
+              end
+           in
           let disp = int_of_char c - disp in
           let d = I.of_int disp in
           (* do not accept digit larger than the base *)
+          
+          print_endline "max2";
           if d >= base then raise (EndOfNumber (n, off));
           (* will we overflow? *)
           (match compare n thresh with
           | 0 ->
-            let r = compare d rem in
+            let r = compare d rem in 
+                   print_endline "overflow";
             if r <> cmp_safe && r <> 0 then raise (EndOfNumber (n, off));
           | r ->
             if r <> cmp_safe then raise (EndOfNumber (n, off)));
