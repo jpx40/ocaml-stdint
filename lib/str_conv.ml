@@ -112,7 +112,8 @@ module Make (I : IntSig) : S with type t = I.t = struct
 
   let of_string s =
     try
-      let n, _ = _of_substring 0 s ".of_string" in n
+      (* let n, _ = _of_substring 0 s ".of_string" in n*)
+      let n  = int_of_string(s) |> I.of_int in n
     with
       | EndOfNumber _ -> invalid_arg (I.name ^ ".of_string")
 
