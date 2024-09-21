@@ -102,8 +102,9 @@ module Make (I : IntSig) : S with type t = I.t = struct
             let r = compare d rem in 
                    print_endline "overflow";
             if r <> cmp_safe && r <> 0 then raise (EndOfNumber (n, off));
-          | r ->
-            if r <> cmp_safe then raise (EndOfNumber (n, off)));
+          | r -> 
+          if r <> cmp_safe then   print_endline "overflow");
+            (* if r <> cmp_safe then raise (EndOfNumber (n, off)));*)
           (* shift the existing number, join the new digit *)
           let res = join (I.mul n base) d in
           loop (off + 1) res
